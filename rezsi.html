@@ -4,11 +4,12 @@
     </head>
     <body>
         <h3>Rezsi kalkulátor - Kicsi, sárga, savanyú, de a miénk...</h3>
-        
-        <p>Kezdetleges, MVM alapadatok alapján, nagycsaládosok és gyerek kedvezmények nincsenek még benne és tájékoztató jellegű, számolási hibák lehetnek. Ha találsz hibát, szólj, vagy javítsd és szólj, lásd link alul. :)</p>
+
+        <p>Kezdetleges, MVM alapadatok alapján, nagycsaládosok és gyerek kedvezmények nincsenek még benne és tájékoztató jellegű, számolási hibák lehetnek. Ha
+            találsz hibát, szólj, vagy javítsd és szólj, lásd link alul. :)</p>
 
         <h4>Fogyasztási adatok</h4>
-        
+
         <label>
             A1 tarifa (kWh/év):
             <input id="villany_a1" value="" onchange="recalc();"/>
@@ -27,6 +28,11 @@
         <label>
             Gáz (köbméter/év):
             <input id="gaz" value="" onchange="recalc();"/>
+        </label>
+        <br/>
+        <label>
+            Gyerek száma:
+            <input id="gyerek" value="" onchange="recalc();"/>
         </label>
         <br/>
 
@@ -109,6 +115,7 @@
             document.getElementById("villany_b").addEventListener('keyup', recalc);
             document.getElementById("villany_h").addEventListener('keyup', recalc);
             document.getElementById("gaz").addEventListener('keyup', recalc);
+            document.getElementById("gyerek").addEventListener('keyup', recalc);
 
             function recalc() {
                 let villany_a1_value = parseFloat(document.getElementById("villany_a1").value);
@@ -124,6 +131,8 @@
                 let uj_villany_h = document.getElementById("uj_villany_h");
                 let diff_villany_h = document.getElementById("diff_villany_h");
                 let gaz_value = parseFloat(document.getElementById("gaz").value);
+                let gyerek_value = parseInt(document.getElementById("gyerek").value);
+
                 let regi_gaz = document.getElementById("regi_gaz");
                 let uj_gaz = document.getElementById("uj_gaz");
                 let diff_gaz = document.getElementById("diff_gaz");
@@ -133,6 +142,7 @@
                 villany_b_value = isNaN(villany_b_value) ? 0.0 : villany_b_value;
                 villany_h_value = isNaN(villany_h_value) ? 0.0 : villany_h_value;
                 gaz_value = isNaN(gaz_value) ? 0.0 : gaz_value;
+                gyerek = isNaN(gaz_value) ? 0 : gyerek;
 
                 let regi_villany_a1_value = 0;
                 let uj_villany_a1_value = 0;
@@ -195,13 +205,14 @@
                 uj_villany_h.value = Math.floor(uj_villany_h_value);
 
                 // Gáz tarifa
-                if (gaz_value <= 1729) {
+                let gyerek_kobmeter = gyerek_value < 3 ? 0 : 300 + (gyerek_value - 2) * 300;
+                if (gaz_value <= 1729 + gyerek_kobmeter) {
                     regi_gaz_value += gaz_value * 102;
                     uj_gaz_value += gaz_value * 102;
                 } else {
                     regi_gaz_value += (gaz_value) * 102;
-                    uj_gaz_value += (1729) * 102;
-                    uj_gaz_value += (gaz_value - 1729) * 747;
+                    uj_gaz_value += (1729 + gyerek_kobmeter) * 102;
+                    uj_gaz_value += (gaz_value - (1729 + gyerek_kobmeter)) * 747;
                 }
                 regi_gaz.value = Math.floor(regi_gaz_value);
                 uj_gaz.value = Math.floor(uj_gaz_value);
