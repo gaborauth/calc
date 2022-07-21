@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>Rezsi kalkulátor</title>
+    </head>
+    <body>
+        <h4>Rezsi kalkulátor - Kicsi, sárga, savanyú, de a miénk...</h4>
+        <label>
+            A1 tarifa (kWh/év):
+            <input id="villany_a1" value="" onchange="recalc();"/>
+        </label>
+        <br/>
+        <label>
+            B-tarifa (kWh/év):
+            <input id="villany_b" value="" onchange="recalc();"/>
+        </label>
+        <br/>
+        <label>
+            H-tarifa (kWh/év):
+            <input id="villany_h" value="" onchange="recalc();"/>
+        </label>
+        <br/>
+        <label>
+            Gáz (köbméter/év):
+            <input id="gaz" value="" onchange="recalc();"/>
+        </label>
+        <br/>
+
+        <h4>Régi tarifa</h4>
+
+        <label>
+            A1 tarifa (forint/év):
+            <input id="regi_villany_a1" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            B-tarifa (forint/év):
+            <input id="regi_villany_b" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            H-tarifa (forint/év):
+            <input id="regi_villany_h" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            Gáz (forint/év):
+            <input id="regi_gaz" value="" readonly>
+        </label>
+        <br/>
+
+        <h4>Új tarifa</h4>
+
+        <label>
+            A1 tarifa (forint/év):
+            <input id="uj_villany_a1" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            B-tarifa (forint/év):
+            <input id="uj_villany_b" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            H-tarifa (forint/év):
+            <input id="uj_villany_h" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            Gáz (forint/év):
+            <input id="uj_gaz" value="" readonly>
+        </label>
+        <br/>
+
+        <h4>Új - régi tarifa (drágulás)</h4>
+
+        <label>
+            A1 tarifa (forint/év):
+            <input id="diff_villany_a1" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            B-tarifa (forint/év):
+            <input id="diff_villany_b" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            H-tarifa (forint/év):
+            <input id="diff_villany_h" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            Gáz (forint/év):
+            <input id="diff_gaz" value="" readonly>
+        </label>
+        <br/>
+        <label>
+            Összesen (forint/év):
+            <input id="diff" value="" readonly>
+        </label>
+        <br/>
+
+        <script lang="script/javascript">
+            document.getElementById("villany_a1").addEventListener('keyup', recalc);
+            document.getElementById("villany_b").addEventListener('keyup', recalc);
+            document.getElementById("villany_h").addEventListener('keyup', recalc);
+            document.getElementById("gaz").addEventListener('keyup', recalc);
+
+            function recalc() {
+                let villany_a1_value = parseFloat(document.getElementById("villany_a1").value);
+                let regi_villany_a1 = document.getElementById("regi_villany_a1");
+                let uj_villany_a1 = document.getElementById("uj_villany_a1");
+                let diff_villany_a1 = document.getElementById("diff_villany_a1");
+                let villany_b_value = parseFloat(document.getElementById("villany_b").value);
+                let regi_villany_b = document.getElementById("regi_villany_b");
+                let uj_villany_b = document.getElementById("uj_villany_b");
+                let diff_villany_b = document.getElementById("diff_villany_b");
+                let villany_h_value = parseFloat(document.getElementById("villany_h").value);
+                let regi_villany_h = document.getElementById("regi_villany_h");
+                let uj_villany_h = document.getElementById("uj_villany_h");
+                let diff_villany_h = document.getElementById("diff_villany_h");
+                let gaz_value = parseFloat(document.getElementById("gaz").value);
+                let regi_gaz = document.getElementById("regi_gaz");
+                let uj_gaz = document.getElementById("uj_gaz");
+                let diff_gaz = document.getElementById("diff_gaz");
+                let diff = document.getElementById("diff");
+
+                villany_a1_value = isNaN(villany_a1_value) ? 0.0 : villany_a1_value;
+                villany_b_value = isNaN(villany_b_value) ? 0.0 : villany_b_value;
+                villany_h_value = isNaN(villany_h_value) ? 0.0 : villany_h_value;
+                gaz_value = isNaN(gaz_value) ? 0.0 : gaz_value;
+
+                let regi_villany_a1_value = 0;
+                let uj_villany_a1_value = 0;
+                let regi_villany_b_value = 0;
+                let uj_villany_b_value = 0;
+                let regi_villany_h_value = 0;
+                let uj_villany_h_value = 0;
+                let regi_gaz_value = 0;
+                let uj_gaz_value = 0;
+
+                // B-tarifa
+                if (villany_b_value <= 2523) {
+                    regi_villany_b_value += villany_b_value * 22.962;
+                    uj_villany_b_value += villany_b_value * 23.100;
+                } else {
+                    regi_villany_b_value += (villany_b_value) * 22.962;
+                    uj_villany_b_value += (2523) * 23.100;
+                    uj_villany_b_value += (villany_b_value - 2523) * 62.900;
+                }
+                regi_villany_b.value = Math.floor(regi_villany_b_value);
+                uj_villany_b.value = Math.floor(uj_villany_b_value);
+
+                // A1-tarifa
+                if (villany_b_value + villany_a1_value <= 1320) {
+                    regi_villany_a1_value += villany_a1_value * 36.386;
+                    uj_villany_a1_value += villany_a1_value * 36.386;
+                } else if (villany_b_value + villany_a1_value <= 2523) {
+                    if (villany_b_value <= 1320) {
+                        regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                        uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                    } else {
+                        regi_villany_a1_value += villany_a1_value * 37.503;
+                        uj_villany_a1_value += villany_a1_value * 37.503;
+                    }
+                } else {
+                    if (villany_b_value <= 1320) {
+                        regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                        uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.100;
+                    } else if (villany_b_value <= 2523) {
+                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (2523 - villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.100;
+                    } else {
+                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value) * 70.100;
+                    }
+                }
+                regi_villany_a1.value = Math.floor(regi_villany_a1_value);
+                uj_villany_a1.value = Math.floor(uj_villany_a1_value);
+
+                // H-tarifa
+                regi_villany_h_value += (villany_h_value) * 22.962;
+                uj_villany_h_value += (villany_h_value) * 36.000;
+                regi_villany_h.value = Math.floor(regi_villany_h_value);
+                uj_villany_h.value = Math.floor(uj_villany_h_value);
+
+                // Gáz tarifa
+                if (gaz_value <= 1729) {
+                    regi_gaz_value += gaz_value * 102;
+                    uj_gaz_value += gaz_value * 102;
+                } else {
+                    regi_gaz_value += (gaz_value) * 102;
+                    uj_gaz_value += (1729) * 102;
+                    uj_gaz_value += (gaz_value - 1729) * 747;
+                }
+                regi_gaz.value = Math.floor(regi_gaz_value);
+                uj_gaz.value = Math.floor(uj_gaz_value);
+
+                diff_villany_a1.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value);
+                diff_villany_b.value = Math.floor(uj_villany_b_value - regi_villany_b_value);
+                diff_villany_h.value = Math.floor(uj_villany_h_value - regi_villany_h_value);
+                diff_gaz.value = Math.floor(uj_gaz_value - regi_gaz_value);
+
+                diff.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value) +
+                    Math.floor(uj_villany_b_value - regi_villany_b_value) +
+                    Math.floor(uj_villany_h_value - regi_villany_h_value) +
+                    Math.floor(uj_gaz_value - regi_gaz_value);
+            }
+        </script>
+        <hr/>
+        Forrás és pull request: <a href="https://github.com/gaborauth/calc">https://github.com/gaborauth/calc</a>
+    </body>
+</html>
