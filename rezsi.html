@@ -39,14 +39,18 @@
     </head>
     <body>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=160086644614688&autoLogAppEvents=1" nonce="fCItcDPE"></script>
+        <script async defer crossorigin="anonymous"
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=160086644614688&autoLogAppEvents=1" nonce="fCItcDPE"></script>
 
         <h3>Rezsi kalkulátor - Kicsi, sárga, savanyú, de a miénk...</h3>
 
         <p>Kezdetleges, MVM alapadatok alapján, nagycsaládosok régi kedvezménye nincs még benne és tájékoztató jellegű, számolási hibák lehetnek. Ha
             találsz hibát, szólj, vagy javítsd és szólj, lásd link alul. :)</p>
 
-        <div class="fb-share-button" data-href="https://gaborauth.github.io/calc/rezsi.html" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgaborauth.github.io%2Fcalc%2Frezsi.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+        <div class="fb-share-button" data-href="https://gaborauth.github.io/calc/rezsi.html" data-layout="button_count" data-size="small"><a target="_blank"
+                                                                                                                                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgaborauth.github.io%2Fcalc%2Frezsi.html&amp;src=sdkpreparse"
+                                                                                                                                             class="fb-xfbml-parse-ignore">Share</a>
+        </div>
 
         <h4>Éves átlagos fogyasztási adatok</h4>
 
@@ -230,52 +234,38 @@
                     uj_villany_b_value += (villany_b_value - 2523) * 62.884;
                 }
                 regi_villany_b.value = Math.floor(regi_villany_b_value).toLocaleString("hu");
-                regi_villany_b_ho.value = Math.floor(regi_villany_b_value/12).toLocaleString("hu");
+                regi_villany_b_ho.value = Math.floor(regi_villany_b_value / 12).toLocaleString("hu");
                 uj_villany_b.value = Math.floor(uj_villany_b_value).toLocaleString("hu");
-                uj_villany_b_ho.value = Math.floor(uj_villany_b_value/12).toLocaleString("hu");
+                uj_villany_b_ho.value = Math.floor(uj_villany_b_value / 12).toLocaleString("hu");
 
                 // A1-tarifa
-                if (villany_b_value + villany_a1_value <= 1320) {
+                if (villany_a1_value <= 1320) {
                     regi_villany_a1_value += villany_a1_value * 36.386;
                     uj_villany_a1_value += villany_a1_value * 36.386;
-                } else if (villany_b_value + villany_a1_value <= 2523) {
-                    if (villany_b_value <= 1320) {
-                        regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
-                        uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
-                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                    } else {
-                        regi_villany_a1_value += villany_a1_value * 37.503;
-                        uj_villany_a1_value += villany_a1_value * 37.503;
-                    }
+                } else if (villany_a1_value <= 2523) {
+                    regi_villany_a1_value += (1320) * 36.386;
+                    uj_villany_a1_value += (1320) * 36.386;
+                    regi_villany_a1_value += (villany_a1_value - 1320) * 37.503;
+                    uj_villany_a1_value += (villany_a1_value - 1320) * 37.503;
                 } else {
-                    if (villany_b_value <= 1320) {
-                        regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
-                        uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
-                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.104;
-                    } else if (villany_b_value <= 2523) {
-                        regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523 - 1320) * 70.104;
-                    } else {
-                        regi_villany_a1_value += (villany_a1_value) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value) * 70.104;
-                    }
+                    regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                    uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
+                    regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                    uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
+                    uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.104;
                 }
                 regi_villany_a1.value = Math.floor(regi_villany_a1_value).toLocaleString("hu");
-                regi_villany_a1_ho.value = Math.floor(regi_villany_a1_value/12).toLocaleString("hu");
+                regi_villany_a1_ho.value = Math.floor(regi_villany_a1_value / 12).toLocaleString("hu");
                 uj_villany_a1.value = Math.floor(uj_villany_a1_value).toLocaleString("hu");
-                uj_villany_a1_ho.value = Math.floor(uj_villany_a1_value/12).toLocaleString("hu");
+                uj_villany_a1_ho.value = Math.floor(uj_villany_a1_value / 12).toLocaleString("hu");
 
                 // H-tarifa
                 regi_villany_h_value += (villany_h_value) * 22.962;
-                uj_villany_h_value += (villany_h_value) * 36.000;
+                uj_villany_h_value += (villany_h_value) * 37.503;
                 regi_villany_h.value = Math.floor(regi_villany_h_value);
-                regi_villany_h_ho.value = Math.floor(regi_villany_h_value/12);
+                regi_villany_h_ho.value = Math.floor(regi_villany_h_value / 12);
                 uj_villany_h.value = Math.floor(uj_villany_h_value);
-                uj_villany_h_ho.value = Math.floor(uj_villany_h_value/12);
+                uj_villany_h_ho.value = Math.floor(uj_villany_h_value / 12);
 
                 // Gáz tarifa
                 let gyerek_kobmeter = gyerek_value < 3 ? 0 : 300 + (gyerek_value - 2) * 300;
@@ -288,29 +278,29 @@
                     uj_gaz_value += (gaz_value - (1729 + gyerek_kobmeter)) * 747;
                 }
                 regi_gaz.value = Math.floor(regi_gaz_value).toLocaleString("hu");
-                regi_gaz_ho.value = Math.floor(regi_gaz_value/12).toLocaleString("hu");
+                regi_gaz_ho.value = Math.floor(regi_gaz_value / 12).toLocaleString("hu");
                 uj_gaz.value = Math.floor(uj_gaz_value).toLocaleString("hu");
-                uj_gaz_ho.value = Math.floor(uj_gaz_value/12).toLocaleString("hu");
+                uj_gaz_ho.value = Math.floor(uj_gaz_value / 12).toLocaleString("hu");
 
                 diff_villany_a1.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value).toLocaleString("hu");
-                diff_villany_a1_ho.value = Math.floor((uj_villany_a1_value - regi_villany_a1_value)/12).toLocaleString("hu");
+                diff_villany_a1_ho.value = Math.floor((uj_villany_a1_value - regi_villany_a1_value) / 12).toLocaleString("hu");
                 diff_villany_b.value = Math.floor(uj_villany_b_value - regi_villany_b_value).toLocaleString("hu");
-                diff_villany_b_ho.value = Math.floor((uj_villany_b_value - regi_villany_b_value)/12).toLocaleString("hu");
+                diff_villany_b_ho.value = Math.floor((uj_villany_b_value - regi_villany_b_value) / 12).toLocaleString("hu");
                 diff_villany_h.value = Math.floor(uj_villany_h_value - regi_villany_h_value).toLocaleString("hu");
-                diff_villany_h_ho.value = Math.floor((uj_villany_h_value - regi_villany_h_value)/12).toLocaleString("hu");
+                diff_villany_h_ho.value = Math.floor((uj_villany_h_value - regi_villany_h_value) / 12).toLocaleString("hu");
                 diff_gaz.value = Math.floor(uj_gaz_value - regi_gaz_value).toLocaleString("hu");
-                diff_gaz_ho.value = Math.floor((uj_gaz_value - regi_gaz_value)/12).toLocaleString("hu");
+                diff_gaz_ho.value = Math.floor((uj_gaz_value - regi_gaz_value) / 12).toLocaleString("hu");
 
                 let regi_value = Math.floor(regi_villany_a1_value + regi_villany_b_value + regi_villany_h_value + regi_gaz_value);
                 let uj_value = Math.floor(uj_villany_a1_value + uj_villany_b_value + uj_villany_h_value + uj_gaz_value);
                 let diff_value = Math.floor(uj_value - regi_value);
 
                 regi.value = Math.floor(regi_value).toLocaleString("hu");
-                regi_ho.value = Math.floor(regi_value/12).toLocaleString("hu");
+                regi_ho.value = Math.floor(regi_value / 12).toLocaleString("hu");
                 uj.value = Math.floor(uj_value).toLocaleString("hu");
-                uj_ho.value = Math.floor(uj_value/12).toLocaleString("hu");
+                uj_ho.value = Math.floor(uj_value / 12).toLocaleString("hu");
                 diff.value = Math.floor(diff_value).toLocaleString("hu");
-                diff_ho.value = Math.floor(diff_value/12).toLocaleString("hu");
+                diff_ho.value = Math.floor(diff_value / 12).toLocaleString("hu");
             }
         </script>
         <hr/>
