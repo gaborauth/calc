@@ -5,11 +5,37 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8YTV2PCSX"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
             gtag('js', new Date());
 
             gtag('config', 'G-S8YTV2PCSX');
         </script>
+        <style type="text/css">
+            .divTable {
+                display: table;
+                width: auto;
+                background-color: #eee;
+                border: 1px solid #666666;
+                border-spacing: 5px; /*cellspacing:poor IE support for  this*/
+                /* border-collapse:separate;*/
+            }
+
+            .divRow {
+                display: table-row;
+                width: auto;
+            }
+
+            .divCell {
+                float: left; /*fix for  buggy browsers*/
+                display: table-column;
+                width: 200px;
+                background-color: #ccc;
+            }
+        </style>
     </head>
     <body>
         <h3>Rezsi kalkulátor - Kicsi, sárga, savanyú, de a miénk...</h3>
@@ -21,103 +47,70 @@
 
         <label>
             A1 tarifa (kWh/év):
-            <input id="villany_a1" value="" onchange="recalc();"/>
+            <input id="villany_a1" value="0" onchange="recalc();"/>
         </label>
         <br/>
         <label>
             B-tarifa (kWh/év):
-            <input id="villany_b" value="" onchange="recalc();"/>
+            <input id="villany_b" value="0" onchange="recalc();"/>
         </label>
         <br/>
         <label>
             H-tarifa (kWh/év):
-            <input id="villany_h" value="" onchange="recalc();"/>
+            <input id="villany_h" value="0" onchange="recalc();"/>
         </label>
         <br/>
         <label>
             Gáz (köbméter/év):
-            <input id="gaz" value="" onchange="recalc();"/>
+            <input id="gaz" value="0" onchange="recalc();"/>
         </label>
         <br/>
         <label>
             Gyerek száma:
-            <input id="gyerek" value="" onchange="recalc();"/>
+            <input id="gyerek" value="0" onchange="recalc();"/>
         </label>
         <br/>
 
-        <h4>Régi tarifa</h4>
+        <h4>Fizetnivaló</h4>
 
-        <label>
-            A1 tarifa (forint/év):
-            <input id="regi_villany_a1" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            B-tarifa (forint/év):
-            <input id="regi_villany_b" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            H-tarifa (forint/év):
-            <input id="regi_villany_h" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            Gáz (forint/év):
-            <input id="regi_gaz" value="" readonly>
-        </label>
-        <br/>
-
-        <h4>Új tarifa</h4>
-
-        <label>
-            A1 tarifa (forint/év):
-            <input id="uj_villany_a1" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            B-tarifa (forint/év):
-            <input id="uj_villany_b" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            H-tarifa (forint/év):
-            <input id="uj_villany_h" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            Gáz (forint/év):
-            <input id="uj_gaz" value="" readonly>
-        </label>
-        <br/>
-
-        <h4>Új - régi tarifa (drágulás)</h4>
-
-        <label>
-            A1 tarifa (forint/év):
-            <input id="diff_villany_a1" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            B-tarifa (forint/év):
-            <input id="diff_villany_b" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            H-tarifa (forint/év):
-            <input id="diff_villany_h" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            Gáz (forint/év):
-            <input id="diff_gaz" value="" readonly>
-        </label>
-        <br/>
-        <label>
-            Összesen (forint/év):
-            <input id="diff" value="" readonly>
-        </label>
-        <br/>
+        <div class="divTable">
+            <div class="headRow">
+                <div class="divCell">Tarifa</div>
+                <div class="divCell">Régi</div>
+                <div class="divCell">Új</div>
+                <div class="divCell">Különbség</div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">A1-tarifa (forint/év)</div>
+                <div class="divCell"><input id="regi_villany_a1" value="" readonly></div>
+                <div class="divCell"><input id="uj_villany_a1" value="" readonly></div>
+                <div class="divCell"><input id="diff_villany_a1" value="" readonly></div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">B-tarifa (forint/év)</div>
+                <div class="divCell"><input id="regi_villany_b" value="" readonly></div>
+                <div class="divCell"><input id="uj_villany_b" value="" readonly></div>
+                <div class="divCell"><input id="diff_villany_b" value="" readonly></div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">H-tarifa (forint/év)</div>
+                <div class="divCell"><input id="regi_villany_h" value="" readonly></div>
+                <div class="divCell"><input id="uj_villany_h" value="" readonly></div>
+                <div class="divCell"><input id="diff_villany_h" value="" readonly></div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">Gáz (forint/év)</div>
+                <div class="divCell"><input id="regi_gaz" value="" readonly></div>
+                <div class="divCell"><input id="uj_gaz" value="" readonly></div>
+                <div class="divCell"><input id="diff_gaz" value="" readonly></div>
+            </div>
+            <div class="divRow">
+                <div class="divCell">Összesen (forint/év)</div>
+                <div class="divCell">-</div>
+                <div class="divCell">-</div>
+                <div class="divCell"><input id="diff" value="" readonly></div>
+            </div>
+        </div>
 
         <script lang="script/javascript">
             document.getElementById("villany_a1").addEventListener('keyup', recalc);
@@ -125,6 +118,8 @@
             document.getElementById("villany_h").addEventListener('keyup', recalc);
             document.getElementById("gaz").addEventListener('keyup', recalc);
             document.getElementById("gyerek").addEventListener('keyup', recalc);
+
+            recalc();
 
             function recalc() {
                 let villany_a1_value = parseFloat(document.getElementById("villany_a1").value);
@@ -171,8 +166,8 @@
                     uj_villany_b_value += (2523) * 23.100;
                     uj_villany_b_value += (villany_b_value - 2523) * 62.900;
                 }
-                regi_villany_b.value = Math.floor(regi_villany_b_value);
-                uj_villany_b.value = Math.floor(uj_villany_b_value);
+                regi_villany_b.value = Math.floor(regi_villany_b_value).toLocaleString("hu");
+                uj_villany_b.value = Math.floor(uj_villany_b_value).toLocaleString("hu");
 
                 // A1-tarifa
                 if (villany_b_value + villany_a1_value <= 1320) {
@@ -204,8 +199,8 @@
                         uj_villany_a1_value += (villany_a1_value) * 70.100;
                     }
                 }
-                regi_villany_a1.value = Math.floor(regi_villany_a1_value);
-                uj_villany_a1.value = Math.floor(uj_villany_a1_value);
+                regi_villany_a1.value = Math.floor(regi_villany_a1_value).toLocaleString("hu");
+                uj_villany_a1.value = Math.floor(uj_villany_a1_value).toLocaleString("hu");
 
                 // H-tarifa
                 regi_villany_h_value += (villany_h_value) * 22.962;
@@ -223,18 +218,19 @@
                     uj_gaz_value += (1729 + gyerek_kobmeter) * 102;
                     uj_gaz_value += (gaz_value - (1729 + gyerek_kobmeter)) * 747;
                 }
-                regi_gaz.value = Math.floor(regi_gaz_value);
-                uj_gaz.value = Math.floor(uj_gaz_value);
+                regi_gaz.value = Math.floor(regi_gaz_value).toLocaleString("hu");
+                uj_gaz.value = Math.floor(uj_gaz_value).toLocaleString("hu");
 
-                diff_villany_a1.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value);
-                diff_villany_b.value = Math.floor(uj_villany_b_value - regi_villany_b_value);
-                diff_villany_h.value = Math.floor(uj_villany_h_value - regi_villany_h_value);
-                diff_gaz.value = Math.floor(uj_gaz_value - regi_gaz_value);
+                diff_villany_a1.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value).toLocaleString("hu");
+                diff_villany_b.value = Math.floor(uj_villany_b_value - regi_villany_b_value).toLocaleString("hu");
+                diff_villany_h.value = Math.floor(uj_villany_h_value - regi_villany_h_value).toLocaleString("hu");
+                diff_gaz.value = Math.floor(uj_gaz_value - regi_gaz_value).toLocaleString("hu");
 
-                diff.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value) +
+                diff_value = Math.floor(uj_villany_a1_value - regi_villany_a1_value) +
                     Math.floor(uj_villany_b_value - regi_villany_b_value) +
                     Math.floor(uj_villany_h_value - regi_villany_h_value) +
                     Math.floor(uj_gaz_value - regi_gaz_value);
+                diff.value = diff_value.toLocaleString("hu");
             }
         </script>
         <hr/>
