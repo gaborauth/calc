@@ -48,33 +48,32 @@
 
         <div class="fb-share-button" data-href="https://gaborauth.github.io/calc/rezsi.html" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgaborauth.github.io%2Fcalc%2Frezsi.html&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
 
-        <h4>Fogyasztási adatok (ÉVES!)</h4>
+        <h4>Éves átlagos fogyasztási adatok</h4>
 
-        <label>
-            A1 tarifa (kWh/év):
-            <input id="villany_a1" value="0" onchange="recalc();"/>
-        </label>
-        <br/>
-        <label>
-            B-tarifa (kWh/év):
-            <input id="villany_b" value="0" onchange="recalc();"/>
-        </label>
-        <br/>
-        <label>
-            H-tarifa (kWh/év):
-            <input id="villany_h" value="0" onchange="recalc();"/>
-        </label>
-        <br/>
-        <label>
-            Gáz (köbméter/év):
-            <input id="gaz" value="0" onchange="recalc();"/>
-        </label>
-        <br/>
-        <label>
-            Gyerek száma:
-            <input id="gyerek" value="0" onchange="recalc();"/>
-        </label>
-        <br/>
+        <div class="group">
+            <label for="villany_a1">A-tarifa (kWh/év)</label>
+            <input type="text" class="form-control" id="villany_a1" value="2523">
+        </div>
+
+        <div class="group">
+            <label for="villany_b">B-tarifa (kWh/év)</label>
+            <input type="text" class="form-control" id="villany_b" value="0">
+        </div>
+
+        <div class="group">
+            <label for="villany_h">H-tarifa (kWh/év)</label>
+            <input type="text" class="form-control" id="villany_h" value="0">
+        </div>
+
+        <div class="group">
+            <label for="gaz">Gáz (köbméter/év)</label>
+            <input type="text" class="form-control" id="gaz" value="1729">
+        </div>
+
+        <div class="group">
+            <label for="gyerek">Gyermekek száma</label>
+            <input type="text" class="form-control" id="gyerek">
+        </div>
 
         <h4>Fizetnivaló évente</h4>
         <div class="divTable">
@@ -254,7 +253,7 @@
                         regi_villany_a1_value += (1320 - villany_b_value) * 36.386;
                         uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
                         regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (2523 - villany_b_value - 1320) * 37.503;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
                         uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.104;
                     } else if (villany_b_value <= 2523) {
                         regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
