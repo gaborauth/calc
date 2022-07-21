@@ -85,37 +85,43 @@
                 <div class="divCell">Tarifa</div>
                 <div class="divCell">Régi</div>
                 <div class="divCell">Új</div>
-                <div class="divCell">Különbség</div>
+                <div class="divCell">Különbség (forint)</div>
+                <div class="divCell">Különbség (%)</div>
             </div>
             <div class="divRow">
                 <div class="divCell">A1-tarifa (forint/év)</div>
                 <div class="divCell"><input id="regi_villany_a1" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_a1" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_a1" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_a1" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">B-tarifa (forint/év)</div>
                 <div class="divCell"><input id="regi_villany_b" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_b" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_b" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_b" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">H-tarifa (forint/év)</div>
                 <div class="divCell"><input id="regi_villany_h" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_h" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_h" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_h" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">Gáz (forint/év)</div>
                 <div class="divCell"><input id="regi_gaz" value="" readonly></div>
                 <div class="divCell"><input id="uj_gaz" value="" readonly></div>
                 <div class="divCell"><input id="diff_gaz" value="" readonly></div>
+                <div class="divCell"><input id="diffp_gaz" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">Összesen (forint/év)</div>
                 <div class="divCell"><input id="regi" value="" readonly></div>
                 <div class="divCell"><input id="uj" value="" readonly></div>
                 <div class="divCell"><input id="diff" value="" readonly></div>
+                <div class="divCell"><input id="diffp" value="" readonly></div>
             </div>
         </div>
 
@@ -125,37 +131,43 @@
                 <div class="divCell">Tarifa</div>
                 <div class="divCell">Régi</div>
                 <div class="divCell">Új</div>
-                <div class="divCell">Különbség</div>
+                <div class="divCell">Különbség (forint)</div>
+                <div class="divCell">Különbség (%)</div>
             </div>
             <div class="divRow">
                 <div class="divCell">A1-tarifa (forint/hó)</div>
                 <div class="divCell"><input id="regi_villany_a1_ho" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_a1_ho" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_a1_ho" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_a1_ho" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">B-tarifa (forint/hó)</div>
                 <div class="divCell"><input id="regi_villany_b_ho" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_b_ho" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_b_ho" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_b_ho" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">H-tarifa (forint/hó)</div>
                 <div class="divCell"><input id="regi_villany_h_ho" value="" readonly></div>
                 <div class="divCell"><input id="uj_villany_h_ho" value="" readonly></div>
                 <div class="divCell"><input id="diff_villany_h_ho" value="" readonly></div>
+                <div class="divCell"><input id="diffp_villany_h_ho" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">Gáz (forint/hó)</div>
                 <div class="divCell"><input id="regi_gaz_ho" value="" readonly></div>
                 <div class="divCell"><input id="uj_gaz_ho" value="" readonly></div>
                 <div class="divCell"><input id="diff_gaz_ho" value="" readonly></div>
+                <div class="divCell"><input id="diffp_gaz_ho" value="" readonly></div>
             </div>
             <div class="divRow">
                 <div class="divCell">Összesen (forint/hó)</div>
                 <div class="divCell"><input id="regi_ho" value="" readonly></div>
                 <div class="divCell"><input id="uj_ho" value="" readonly></div>
                 <div class="divCell"><input id="diff_ho" value="" readonly></div>
+                <div class="divCell"><input id="diffp_ho" value="" readonly></div>
             </div>
         </div>
 
@@ -175,7 +187,9 @@
                 let uj_villany_a1 = document.getElementById("uj_villany_a1");
                 let uj_villany_a1_ho = document.getElementById("uj_villany_a1_ho");
                 let diff_villany_a1 = document.getElementById("diff_villany_a1");
+                let diffp_villany_a1 = document.getElementById("diffp_villany_a1");
                 let diff_villany_a1_ho = document.getElementById("diff_villany_a1_ho");
+                let diffp_villany_a1_ho = document.getElementById("diffp_villany_a1_ho");
 
                 let villany_b_value = parseFloat(document.getElementById("villany_b").value);
                 let regi_villany_b = document.getElementById("regi_villany_b");
@@ -183,7 +197,9 @@
                 let uj_villany_b = document.getElementById("uj_villany_b");
                 let uj_villany_b_ho = document.getElementById("uj_villany_b_ho");
                 let diff_villany_b = document.getElementById("diff_villany_b");
+                let diffp_villany_b = document.getElementById("diffp_villany_b");
                 let diff_villany_b_ho = document.getElementById("diff_villany_b_ho");
+                let diffp_villany_b_ho = document.getElementById("diffp_villany_b_ho");
 
                 let villany_h_value = parseFloat(document.getElementById("villany_h").value);
                 let regi_villany_h = document.getElementById("regi_villany_h");
@@ -191,7 +207,9 @@
                 let uj_villany_h = document.getElementById("uj_villany_h");
                 let uj_villany_h_ho = document.getElementById("uj_villany_h_ho");
                 let diff_villany_h = document.getElementById("diff_villany_h");
+                let diffp_villany_h = document.getElementById("diffp_villany_h");
                 let diff_villany_h_ho = document.getElementById("diff_villany_h_ho");
+                let diffp_villany_h_ho = document.getElementById("diffp_villany_h_ho");
 
                 let gaz_value = parseFloat(document.getElementById("gaz").value);
                 let regi_gaz = document.getElementById("regi_gaz");
@@ -199,15 +217,19 @@
                 let uj_gaz = document.getElementById("uj_gaz");
                 let uj_gaz_ho = document.getElementById("uj_gaz_ho");
                 let diff_gaz = document.getElementById("diff_gaz");
+                let diffp_gaz = document.getElementById("diffp_gaz");
                 let diff_gaz_ho = document.getElementById("diff_gaz_ho");
+                let diffp_gaz_ho = document.getElementById("diffp_gaz_ho");
 
                 let gyerek_value = parseInt(document.getElementById("gyerek").value);
                 let regi = document.getElementById("regi");
                 let uj = document.getElementById("uj");
                 let diff = document.getElementById("diff");
+                let diffp = document.getElementById("diffp");
                 let regi_ho = document.getElementById("regi_ho");
                 let uj_ho = document.getElementById("uj_ho");
                 let diff_ho = document.getElementById("diff_ho");
+                let diffp_ho = document.getElementById("diffp_ho");
 
                 villany_a1_value = isNaN(villany_a1_value) ? 0.0 : villany_a1_value;
                 villany_b_value = isNaN(villany_b_value) ? 0.0 : villany_b_value;
@@ -283,13 +305,21 @@
                 uj_gaz_ho.value = Math.floor(uj_gaz_value / 12).toLocaleString("hu");
 
                 diff_villany_a1.value = Math.floor(uj_villany_a1_value - regi_villany_a1_value).toLocaleString("hu");
+                diffp_villany_a1.value = regi_villany_a1_value === 0.0 ? "0.00" : (100.0 * uj_villany_a1_value / regi_villany_a1_value - 100.0).toFixed(2).toLocaleString("hu");
                 diff_villany_a1_ho.value = Math.floor((uj_villany_a1_value - regi_villany_a1_value) / 12).toLocaleString("hu");
+                diffp_villany_a1_ho.value = regi_villany_a1_value === 0.0 ? "0.00" : (uj_villany_a1_value / regi_villany_a1_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_villany_b.value = Math.floor(uj_villany_b_value - regi_villany_b_value).toLocaleString("hu");
+                diffp_villany_b.value = regi_villany_b_value === 0.0 ? "0.00" : (uj_villany_b_value / regi_villany_b_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_villany_b_ho.value = Math.floor((uj_villany_b_value - regi_villany_b_value) / 12).toLocaleString("hu");
+                diffp_villany_b_ho.value = regi_villany_b_value === 0.0 ? "0.00" : (uj_villany_b_value / regi_villany_b_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_villany_h.value = Math.floor(uj_villany_h_value - regi_villany_h_value).toLocaleString("hu");
+                diffp_villany_h.value = regi_villany_h_value === 0.0 ? "0.00" : (uj_villany_h_value / regi_villany_h_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_villany_h_ho.value = Math.floor((uj_villany_h_value - regi_villany_h_value) / 12).toLocaleString("hu");
+                diffp_villany_h_ho.value = regi_villany_h_value === 0.0 ? "0.00" : (uj_villany_h_value / regi_villany_h_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_gaz.value = Math.floor(uj_gaz_value - regi_gaz_value).toLocaleString("hu");
+                diffp_gaz.value = regi_gaz_value === 0.0 ? "0.00" : (uj_gaz_value / regi_gaz_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_gaz_ho.value = Math.floor((uj_gaz_value - regi_gaz_value) / 12).toLocaleString("hu");
+                diffp_gaz_ho.value = regi_gaz_value === 0.0 ? "0.00" : (uj_gaz_value / regi_gaz_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
 
                 let regi_value = Math.floor(regi_villany_a1_value + regi_villany_b_value + regi_villany_h_value + regi_gaz_value);
                 let uj_value = Math.floor(uj_villany_a1_value + uj_villany_b_value + uj_villany_h_value + uj_gaz_value);
@@ -300,7 +330,9 @@
                 uj.value = Math.floor(uj_value).toLocaleString("hu");
                 uj_ho.value = Math.floor(uj_value / 12).toLocaleString("hu");
                 diff.value = Math.floor(diff_value).toLocaleString("hu");
+                diffp.value = regi_value === 0.0 ? "0.00" : (uj_value / regi_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
                 diff_ho.value = Math.floor(diff_value / 12).toLocaleString("hu");
+                diffp_ho.value = regi_value === 0.0 ? "0.00" : (uj_value / regi_value * 100.0 - 100.0).toFixed(2).toLocaleString("hu");
             }
         </script>
         <hr/>
