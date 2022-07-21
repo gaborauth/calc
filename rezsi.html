@@ -164,7 +164,7 @@
                 } else {
                     regi_villany_b_value += (villany_b_value) * 22.962;
                     uj_villany_b_value += (2523) * 23.100;
-                    uj_villany_b_value += (villany_b_value - 2523) * 62.900;
+                    uj_villany_b_value += (villany_b_value - 2523) * 62.884;
                 }
                 regi_villany_b.value = Math.floor(regi_villany_b_value).toLocaleString("hu");
                 uj_villany_b.value = Math.floor(uj_villany_b_value).toLocaleString("hu");
@@ -189,14 +189,14 @@
                         uj_villany_a1_value += (1320 - villany_b_value) * 36.386;
                         regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
                         uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.100;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523 - 1320) * 70.104;
                     } else if (villany_b_value <= 2523) {
                         regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
                         uj_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523) * 70.100;
+                        uj_villany_a1_value += (villany_a1_value + villany_b_value - 2523 - 1320) * 70.104;
                     } else {
                         regi_villany_a1_value += (villany_a1_value + villany_b_value - 1320) * 37.503;
-                        uj_villany_a1_value += (villany_a1_value) * 70.100;
+                        uj_villany_a1_value += (villany_a1_value) * 70.104;
                     }
                 }
                 regi_villany_a1.value = Math.floor(regi_villany_a1_value).toLocaleString("hu");
